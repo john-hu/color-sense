@@ -1,0 +1,47 @@
+.color-wheel {
+  width: 20rem;
+  height: 20rem;
+}
+
+.red, .green, .blue {
+  width: 20rem;
+  height: 20rem;
+  position: absolute;
+}
+
+.red .fan-shape-mask {
+  transform: rotate(30deg);
+}
+
+.red .fan-shape-mask::after {
+  transform: rotate(120deg);
+  background-color: red;
+}
+
+.green .fan-shape-mask {
+  transform: rotate(150deg);
+}
+
+.green .fan-shape-mask::after {
+  transform: rotate(120deg);
+  background-color: green;
+}
+
+.blue .fan-shape-mask {
+  transform: rotate(270deg);
+}
+
+.blue .fan-shape-mask::after {
+  transform: rotate(120deg);
+  background-color: blue;
+}
+
+.mixed-color {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 51%;
+  background-color: yellow;
+  position: absolute;
+  top: 5rem;
+  left: 5rem;
+}
