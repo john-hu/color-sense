@@ -21,17 +21,28 @@
   <body>
     <div class="panel panel-default game-container">
       <div class="panel-heading">
-        <h3 class="panel-title game-title">Score: <span>999</span></h3>
+        <h3 class="panel-title game-title">Level: <span class="level-text">999</span></h3>
       </div>
       <div class="panel-body color-wheel">
+        <div class="button-group">
+          <button class="button-r">R</button>
+          <button class="button-g">G</button>
+          <button class="button-b">B</button>
+        </div>
         <div class="red fan-shape">
-          <div class="fan-shape-mask"></div>
+          <div class="fan-shape-mask">
+            <div class="fan-color"></div>
+          </div>
         </div>
         <div class="green fan-shape">
-          <div class="fan-shape-mask"></div>
+          <div class="fan-shape-mask">
+            <div class="fan-color"></div>
+          </div>
         </div>
         <div class="blue fan-shape">
-          <div class="fan-shape-mask"></div>
+          <div class="fan-shape-mask">
+            <div class="fan-color"></div>
+          </div>
         </div>
         <canvas class="mixed-color"></canvas>
         <canvas class="target-color"></canvas>

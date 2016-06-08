@@ -21,7 +21,7 @@
 
 }
 
-.fan-shape-mask::after {
+.fan-shape-mask .fan-color {
   content: ' ';
   position: absolute;
   left: 0;
