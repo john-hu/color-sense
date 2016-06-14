@@ -25,7 +25,8 @@ $(function docReady() {
   }
 
   function initColorLevel() {
-    $('.level-text').text(level);
+    // Since the algorithm is starting from 3, we should subtract 2 to have a game from level 1.
+    $('.level-text').text((level - 2));
     var span = Math.floor(256 / level);
     var start = span / 2;
     for (var i = 0; i < level; i++) {
