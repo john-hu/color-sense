@@ -12,6 +12,8 @@
 .circular-menu {
   position: absolute;
   z-index: inherit;
+  /* XXX: this is a workaround for lacking no-transition feature of circular_menu */
+  transition: transform .01s, visibility .01s;
 }
 
 .mixed-color, .target-color {
