@@ -6,38 +6,12 @@
 
 .color-wheel {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 40px);
 }
 
-.fan-shape {
+.circular-menu {
   position: absolute;
-}
-
-.red .fan-shape-mask {
-  transform: rotate(30deg);
-}
-
-.red .fan-shape-mask .fan-color {
-  transform: rotate(120deg);
-  background-color: red;
-}
-
-.green .fan-shape-mask {
-  transform: rotate(150deg);
-}
-
-.green .fan-shape-mask .fan-color {
-  transform: rotate(120deg);
-  background-color: green;
-}
-
-.blue .fan-shape-mask {
-  transform: rotate(270deg);
-}
-
-.blue .fan-shape-mask .fan-color {
-  transform: rotate(120deg);
-  background-color: blue;
+  z-index: inherit;
 }
 
 .mixed-color, .target-color {

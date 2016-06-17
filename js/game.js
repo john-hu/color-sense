@@ -8,9 +8,9 @@ $(function docReady() {
     var wheelSize = Math.min(wheelWidth, wheelHeight);
 
     // posit each fan and center at screen
-    $('.fan-shape').width(wheelSize + 'px');
-    $('.fan-shape').height(wheelSize + 'px');
-    $('.fan-shape').css('transform', 'translate(' + ((wheelWidth - wheelSize) / 2) + 'px,'
+    $('#main-container').width(wheelSize + 'px');
+    $('#main-container').height(wheelSize + 'px');
+    $('#main-container').css('transform', 'translate(' + ((wheelWidth - wheelSize) / 2) + 'px,'
                                                   + ((wheelHeight - wheelSize) / 2) + 'px)');
     // posit mixed color and center at screen
     $('.mixed-color').width(wheelSize / 2 + 'px');
@@ -37,9 +37,9 @@ $(function docReady() {
   function initColor() {
     var c = colorMap[0];
 
-    $('.red .fan-shape-mask .fan-color').data('color-index', 0);
-    $('.green .fan-shape-mask .fan-color').data('color-index', 0);
-    $('.blue .fan-shape-mask .fan-color').data('color-index', 0);
+    $('.red .circular-menu-item-anchor').data('color-index', 0);
+    $('.green .circular-menu-item-anchor').data('color-index', 0);
+    $('.blue .circular-menu-item-anchor').data('color-index', 0);
 
     renderColor();
     // randomize target color
@@ -62,46 +62,36 @@ $(function docReady() {
   }
 
   function renderColor(dr, dg, db) {
-    var r = dr || colorMap[$('.red .fan-shape-mask .fan-color').data('color-index')];
-    var g = dg || colorMap[$('.green .fan-shape-mask .fan-color').data('color-index')];
-    var b = db || colorMap[$('.blue .fan-shape-mask .fan-color').data('color-index')];
+    var r = dr || colorMap[$('.red .circular-menu-item-anchor').data('color-index')];
+    var g = dg || colorMap[$('.green .circular-menu-item-anchor').data('color-index')];
+    var b = db || colorMap[$('.blue .circular-menu-item-anchor').data('color-index')];
 
+    // XXX: There should be some issues here. We should use css function instead of attr. The color
+    // will not be set when we use css('background-color', 'rgb(r, g, b)');
     // put color to fans
-    $('.red .fan-shape-mask .fan-color').css('background-color', 'rgb(' + r + ', 0, 0)');
-    $('.green .fan-shape-mask .fan-color').css('background-color', 'rgb(0, ' + g + ', 0)');
-    $('.blue .fan-shape-mask .fan-color').css('background-color', 'rgb(0, 0, ' + b + ')');
+    $('.red .circular-menu-item-anchor').attr('style', 'background-color: rgb(' + r + ', 0, 0);');
+    $('.green .circular-menu-item-anchor').attr('style', 'background-color: rgb(0, ' + g + ', 0);');
+    $('.blue .circular-menu-item-anchor').attr('style', 'background-color: rgb(0, 0, ' + b + ');');
 
     // render mixed color
     $('.mixed-color').css('background-color', 'rgb(' + r +', ' + g + ', ' + b + ')');
   }
 
   function handleColorClicked(e) {
-    var selector;
-    switch(e.target.innerText) {
-      case 'R':
-        selector = '.red .fan-shape-mask .fan-color';
-        break;
-      case 'G':
-        selector = '.green .fan-shape-mask .fan-color';
-        break;
-      default:
-        selector = '.blue .fan-shape-mask .fan-color';
-        break;
-    }
-    var idx = $(selector).data('color-index');
+    var idx = $(e.target).data('color-index');
     if (++idx >= level) {
       idx = 0;
     }
-    $(selector).data('color-index', idx);
+    $(e.target).data('color-index', idx);
 
     renderColor();
     checkAnswer();
   }
 
   function checkAnswer() {
-    var r = colorMap[$('.red .fan-shape-mask .fan-color').data('color-index')];
-    var g = colorMap[$('.green .fan-shape-mask .fan-color').data('color-index')];
-    var b = colorMap[$('.blue .fan-shape-mask .fan-color').data('color-index')];
+    var r = colorMap[$('.red .circular-menu-item-anchor').data('color-index')];
+    var g = colorMap[$('.green .circular-menu-item-anchor').data('color-index')];
+    var b = colorMap[$('.blue .circular-menu-item-anchor').data('color-index')];
     if (answer.r === r && answer.g === g && answer.b === b) {
       alert('You are correct!! Please try next level!!!');
       level++;
@@ -116,19 +106,27 @@ $(function docReady() {
 
   $(window).resize(resizeGame);
 
-  // The following code cannot work because of overlapping issue. I should change it
-  // to my another circular-menu component to handle it. The buttons, r, g, b, are
-  // workaround of this issue.
-  $('.button-r').click(handleColorClicked);
-  $('.button-g').click(handleColorClicked);
-  $('.button-b').click(handleColorClicked);
-  // $('.red .fan-shape-mask .fan-color').click(handleColorClicked);
-  // $('.green .fan-shape-mask .fan-color').click(handleColorClicked);
-  // $('.blue .fan-shape-mask .fan-color').click(handleColorClicked);
+  var menu = new CircularMenu($('#main-container').get(0));
+  menu.marginAngle = 2;
+  menu.totalAngle = 360;
+  menu.addItem('blue', null, 'blue');
+  menu.addItem();
+  menu.addItem('red', null, 'red');
+  menu.addItem();
+  menu.addItem('green', null, 'green');
+  menu.addItem();
+  menu.render();
 
-  resizeGame();
-  initColorLevel();
-  initColor();
+  window.setTimeout(function() {
+    menu.open().then(function() {
+      $('.red .circular-menu-item-anchor').click(handleColorClicked);
+      $('.green .circular-menu-item-anchor').click(handleColorClicked);
+      $('.blue .circular-menu-item-anchor').click(handleColorClicked);
 
+      resizeGame();
+      initColorLevel();
+      initColor();
+    });
+  });
 });
 
