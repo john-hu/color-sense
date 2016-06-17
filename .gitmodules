@@ -1,0 +1,3 @@
+[submodule "circular-navigation"]
+	path = circular-navigation
+	url = https://github.com/john-hu/circular-navigation.git
