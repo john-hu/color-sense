@@ -16,7 +16,12 @@
   transition: transform .01s, visibility .01s;
 }
 
+.circular-menu .circular-menu-item-anchor {
+  transition: background-color 0.2s ease-in-out;
+}
+
 .mixed-color, .target-color {
   border-radius: 51%;
   position: absolute;
+  transition: background-color 0.2s ease-in-out;
 }
