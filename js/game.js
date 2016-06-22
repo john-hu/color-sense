@@ -37,21 +37,21 @@ $(function docReady() {
   function initColor() {
     var c = colorMap[0];
 
-    $('.red .circular-menu-item-anchor').data('color-index', 0);
-    $('.green .circular-menu-item-anchor').data('color-index', 0);
-    $('.blue .circular-menu-item-anchor').data('color-index', 0);
+    $('.red .circular-menu-item-anchor').data('color-index', level - 1);
+    $('.green .circular-menu-item-anchor').data('color-index', level - 1);
+    $('.blue .circular-menu-item-anchor').data('color-index', level - 1);
 
     renderColor();
     // randomize target color
     var rIdx;
     var gIdx;
     var bIdx;
-    // the 0, 0, 0 will not be a target color because it's the default value.
-    while (!rIdx && !gIdx && !bIdx) {
+    // the level - 1 will not be a target color because it's the default value.
+    do {
       rIdx = Math.floor(level * Math.random());
       gIdx = Math.floor(level * Math.random());
       bIdx = Math.floor(level * Math.random());
-    }
+    } while (rIdx === level - 1 && gIdx === level - 1 && bIdx === level - 1)
 
     var r = colorMap[rIdx];
     var g = colorMap[gIdx];
@@ -100,6 +100,36 @@ $(function docReady() {
     }
   }
 
+  function introduction() {
+    var trip = new Trip([{
+      'sel': $('.target-color'),
+      'content': Lang.intro_target,
+      'position': 's',
+      'expose': true
+    }, {
+      'sel': $('.mixed-color'),
+      'content': Lang.intro_mixed,
+      'position': 'n',
+      'expose': true
+    }, {
+      'sel': $('#main-container'),
+      'content': Lang.intro_colors,
+      'position': 'e',
+      'expose': true
+    }, {
+      'content': Lang.intro_start,
+      'position': 'screen-center',
+      'expose': true
+    }], {
+      'delay': -1,
+      'showNavigation' : true,
+      'showCloseBox': true
+    });
+    trip.start();
+  }
+
+  // code starts from here.
+
   var level = 3;
   var colorMap = [];
   var answer = {};
@@ -126,6 +156,7 @@ $(function docReady() {
       resizeGame();
       initColorLevel();
       initColor();
+      introduction();
     });
   });
 });
