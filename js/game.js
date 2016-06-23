@@ -101,6 +101,9 @@ $(function docReady() {
   }
 
   function introduction() {
+    if (document.cookie.indexOf('ftudone=true') > -1) {
+      return;
+    }
     var trip = new Trip([{
       'sel': $('.target-color'),
       'content': Lang.intro_target,
@@ -123,7 +126,10 @@ $(function docReady() {
     }], {
       'delay': -1,
       'showNavigation' : true,
-      'showCloseBox': true
+      'showCloseBox': true,
+      'onEnd': function() {
+        document.cookie = 'ftudone=true';
+      }
     });
     trip.start();
   }
