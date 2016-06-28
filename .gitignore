@@ -34,3 +34,8 @@ node_modules
 
 # Mac DS_Store
 .DS_Store
+
+# Ignore Jekyll files
+_site/
+.sass-cache/
+.jekyll-metadata
