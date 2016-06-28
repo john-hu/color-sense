@@ -132,7 +132,9 @@ $(function docReady() {
       'showNavigation' : true,
       'showCloseBox': true,
       'onEnd': function() {
-        document.cookie = 'ftudone=true';
+        var expireAt = new Date();
+        expireAt.setFullYear(expireAt.getFullYear() + 5);
+        document.cookie = 'ftudone=true;expires=' + expireAt.toGMTString() + ';path=/';
       }
     });
     trip.start();
