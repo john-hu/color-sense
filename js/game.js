@@ -25,6 +25,10 @@ $(function docReady() {
   }
 
   function initColorLevel() {
+    if (level > 256) {
+      alert('You are awesome!!! You had finished all levels.');
+      return false;
+    }
     // Since the algorithm is starting from 3, we should subtract 2 to have a game from level 1.
     $('.level-text').text((level - 2));
     var span = Math.floor(256 / level);
@@ -32,6 +36,7 @@ $(function docReady() {
     for (var i = 0; i < level; i++) {
       colorMap[i] = Math.round(start + span * i);
     }
+    return true;
   }
 
   function initColor() {
@@ -95,8 +100,7 @@ $(function docReady() {
     if (answer.r === r && answer.g === g && answer.b === b) {
       alert('You are correct!! Please try next level!!!');
       level++;
-      initColorLevel();
-      initColor();
+      initColorLevel() && initColor();
     }
   }
 
@@ -160,8 +164,7 @@ $(function docReady() {
       $('.blue .circular-menu-item-anchor').click(handleColorClicked);
 
       resizeGame();
-      initColorLevel();
-      initColor();
+      initColorLevel() && initColor();
       introduction();
     });
   });
