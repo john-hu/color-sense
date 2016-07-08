@@ -38,9 +38,9 @@ How to add two colors into one is a common question. The simplest one is to add 
 
 ## RGB Game
 
-The addition of two colors is the base of our first [color sense game](/game.html). This game is trying to test your RGB sense. It is to check if you can create target color through R, G, B three colors.
+The addition of two colors is the base of our first [color sense game](../../game.html). This game is trying to test your RGB sense. It is to check if you can create target color through R, G, B three colors.
 
 This game increases a level one by one. The level here means value range of a color. If level 1, it is from 0 to 2. The maximum level is 253 where the color is from 0 to 255.
 
-[Try your best now...](/game.html)
+[Try your best now...](../../game.html)
 
