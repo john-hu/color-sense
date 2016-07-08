@@ -6,6 +6,7 @@ tags:
   - color space
   - RGB
   - introduction
+author: John Hu
 ---
 
 According to my son's definition, RGB is just Red, Green, and Blue. Yes, it is correct. But the RGB color space is a great invention at Computer world. It helps us to model a color. Although RGB cannot express all of colors, it still the most popular color space at Computer world.

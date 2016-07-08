@@ -9,7 +9,7 @@
 locale                   : "en-US"
 title                    : "Color Sense"
 title_separator          : "-"
-name                     : "John Hu"
+name                     : "Color Sense"
 description              : "Color Sense is a group of color games..."
 url                      : "https://john-hu.github.io"# the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "/color-sense"# the subpath of your site, e.g. "/blog"
@@ -62,35 +62,35 @@ google_ad_slot           :
 
 
 # Site Author
-author:
-  name             : "John Hu"
-  avatar           : "https://avatars3.githubusercontent.com/u/6179015?v=3&s=460"
-  bio              : "I am an awesome Programmer."
-  location         : "Somewhere in Earth"
-  email            : "im@john.hu"
-  uri              :
-  bitbucket        :
-  codepen          :
-  dribbble         :
-  flickr           :
-  facebook         :
-  foursquare       :
-  github           : "john-hu"
-  google_plus      :
-  keybase          :
-  instagram        :
-  lastfm           :
-  linkedin         :
-  pinterest        :
-  soundcloud       :
-  stackoverflow    : # http://stackoverflow.com/users/123456/username
-  steam            :
-  tumblr           :
-  twitter          :
-  vine             :
-  weibo            :
-  xing             :
-  youtube          :
+#author:
+#  name             : "John Hu"
+#  avatar           : "https://avatars3.githubusercontent.com/u/6179015?v=3&s=460"
+#  bio              : "I am an awesome Programmer."
+#  location         : "Somewhere in Earth"
+#  email            : "im@john.hu"
+#  uri              :
+#  bitbucket        :
+#  codepen          :
+#  dribbble         :
+#  flickr           :
+#  facebook         :
+#  foursquare       :
+#  github           : "john-hu"
+#  google_plus      :
+#  keybase          :
+#  instagram        :
+#  lastfm           :
+#  linkedin         :
+#  pinterest        :
+#  soundcloud       :
+#  stackoverflow    : # http://stackoverflow.com/users/123456/username
+#  steam            :
+#  tumblr           :
+#  twitter          :
+#  vine             :
+#  weibo            :
+#  xing             :
+#  youtube          :
 
 
 # Reading Files
