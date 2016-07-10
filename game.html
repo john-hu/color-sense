@@ -25,10 +25,19 @@
   </head>
   <body>
     <div class="panel panel-default game-container">
-      <div class="panel-heading">
-        <h3 class="panel-title game-title"><span class="level">Level: <span class="level-text">999</span></span></h3>
-      </div>
       <div class="panel-body color-wheel">
+        <!-- navbar -->
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand label -->
+            <div class="navbar-header">
+              <a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Color Sense</a>
+            </div>
+            <!-- level label -->
+            <span class="navbar-text level">Level: <span class="level-text">999</span></span>
+          </div>
+        </nav>
+        <!-- end of navbar -->
         <div id="main-container"></div>
         <canvas class="mixed-color"></canvas>
         <canvas class="target-color"></canvas>
