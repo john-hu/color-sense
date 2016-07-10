@@ -33,7 +33,7 @@ In computer world, the value of RGB is from 0 to 255 levels. So, we can have 256
 
 How to add two colors into one is a common question. The simplest one is to add them directly. Like the output of color rgb(1, 2, 3) + rgb(4, 5, 6) is color(5, 7, 9). A simple RGB color select can be found here:
 
-<iframe src="https://leather-guardian.hyperdev.space/" width="350" height="450"></iframe>
+<iframe src="../../rgb_light_show.html" width="350" height="450"></iframe>
 
 
 ## RGB Game
