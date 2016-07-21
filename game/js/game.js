@@ -79,18 +79,41 @@ $(function docReady() {
     $('.blue .circular-menu-item-anchor').attr('style', 'background-color: rgb(0, 0, ' + b + ');');
 
     // render mixed color
-    $('.mixed-color').css('background-color', 'rgb(' + r +', ' + g + ', ' + b + ')');
+    $('.mixed-color').css('background-color', 'rgb(' + r + ', ' + g + ', ' + b + ')');
+  }
+
+  function genGradualColors(color, colorMap) {
+    var arr = [];
+    for (var i = 0; i < colorMap.length; i++) {
+      if (color === 'r') {
+        arr.push('rgb(' + colorMap[i] + ', 0, 0)');
+      } else if (color === 'g') {
+        arr.push('rgb(0, ' + colorMap[i] + ', 0)');
+      } else if (color === 'b') {
+        arr.push('rgb(0, 0, ' + colorMap[i] + ')');
+      }
+    }
+    return arr;
+  }
+
+  /* color is 'r', 'g' or 'b' */
+  function userPickerColor(color, currentIdx, callback) {
+    var colors = genGradualColors(color, colorMap);
+    picker.show(colors, function (index, color) {
+      callback(index);
+    });
   }
 
   function handleColorClicked(e) {
-    var idx = $(e.target).data('color-index');
-    if (++idx >= level) {
-      idx = 0;
-    }
-    $(e.target).data('color-index', idx);
+    var target = $(e.target),
+      parent = target.parent(),
+      color = parent.hasClass('red') ? 'r' : parent.hasClass('green') ? 'g' : 'b';
 
-    renderColor();
-    checkAnswer();
+    userPickerColor(color, target.data('color-index'), function (idx) {
+      $(e.target).data('color-index', idx);
+      renderColor();
+      checkAnswer();
+    });
   }
 
   function checkAnswer() {
@@ -129,7 +152,7 @@ $(function docReady() {
       'expose': true
     }], {
       'delay': -1,
-      'showNavigation' : true,
+      'showNavigation': true,
       'showCloseBox': true,
       'onEnd': function() {
         var expireAt = new Date();
@@ -145,6 +168,7 @@ $(function docReady() {
   var level = 3;
   var colorMap = [];
   var answer = {};
+  var picker = new ModalColorPicker();
 
   $(window).resize(resizeGame);
 
